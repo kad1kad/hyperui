@@ -36,7 +36,9 @@ const Test: FunctionComponent<Props> = ({ name, item, spacing }) => {
 
   const breakpoints = allBreakpoints
 
-  const { id, title, spacing: space } = item
+  const { id, title, spacing: space, updated } = item
+
+  console.log(item)
 
   const componentSpacing: string = space ? space : spacing
 
@@ -77,7 +79,11 @@ const Test: FunctionComponent<Props> = ({ name, item, spacing }) => {
   return (
     <div className="space-y-4" ref={ref}>
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-bold text-black sm:text-xl">{title}</h2>
+        <div>
+          {updated && <span>New</span>}
+
+          <h2 className="text-lg font-bold text-black sm:text-xl">{title}</h2>
+        </div>
 
         <div className="hidden lg:items-center lg:space-x-4 lg:flex">
           <Range range={range} handleRange={setRange} />
